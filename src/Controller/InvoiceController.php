@@ -150,10 +150,18 @@ class InvoiceController extends AbstractController
         $orderId = (int)$requestParameters['merchant_order_id'];
         $timestamp = $requestParameters['timestamp'];
 
+        $invoiceRepository = $this->doctrine->getRepository(Invoice::class);
+        $invoice = $invoiceRepository->findOneBy(['merchant_order_id' => $orderId]);
+
         $callbackRepository = $this->doctrine->getRepository(Callback::class);
         $callbackExists = $callbackRepository->findOneBy(['merchant_order_id' => $orderId]);
 
         if ($callbackExists) {
+
+            $invoice->setStatus('REJECTED');
+            $this->entityManager->persist($invoice);
+            $this->entityManager->flush();
+
             return new Response('Callback rejected - Duplicate callback.', 409);
         }
 
@@ -172,9 +180,6 @@ class InvoiceController extends AbstractController
         
         //ALSO HARDCODED IN PSP APP
         $confirmSignature = $request->headers->get('X-signature');
-
-        $invoiceRepository = $this->doctrine->getRepository(Invoice::class);
-        $invoice = $invoiceRepository->findOneBy(['merchant_order_id' => $orderId]);
 
         if (!$invoice) {
             return new Response('Invoice does not exist', 404);
