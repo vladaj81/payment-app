@@ -13,45 +13,45 @@ Project for card payment simulation
 
 - In /etc/apache2/apache2.conf file add following virtual hosts:
 
-    <VirtualHost *:80>
-        ServerName payment-app.localhost
-        ServerAlias www.payment-app.localhost
-
-        DocumentRoot /var/www/html/payment-app/public
-        <Directory /var/www/html/payment-app/public>
-            AllowOverride All
-            Require all granted
-            Allow from All
-            <IfModule mod_rewrite.c>
-                Options -MultiViews
-                RewriteEngine On
-            </IfModule>
-            FallbackResource /index.php
-        </Directory>
-
-        ErrorLog /var/log/apache2/project_error.log
-        CustomLog /var/log/apache2/project_access.log combined
-    </VirtualHost>
-
-    <VirtualHost *:80>
-        ServerName psp.localhost
-        ServerAlias www.psp.localhost
-
-        DocumentRoot /var/www/html/payment-service-provider/public
-        <Directory /var/www/html/payment-service-provider/public>
-            AllowOverride All
-            Require all granted
-            Allow from All
-            <IfModule mod_rewrite.c>
-                Options -MultiViews
-                RewriteEngine On
-            </IfModule>
-            FallbackResource /index.php
-        </Directory>
-
-        ErrorLog /var/log/apache2/project_error.log
-        CustomLog /var/log/apache2/project_access.log combined
-    </VirtualHost>
+      <VirtualHost *:80>
+          ServerName payment-app.localhost
+          ServerAlias www.payment-app.localhost
+  
+          DocumentRoot /var/www/html/payment-app/public
+          <Directory /var/www/html/payment-app/public>
+              AllowOverride All
+              Require all granted
+              Allow from All
+              <IfModule mod_rewrite.c>
+                  Options -MultiViews
+                  RewriteEngine On
+              </IfModule>
+              FallbackResource /index.php
+          </Directory>
+  
+          ErrorLog /var/log/apache2/project_error.log
+          CustomLog /var/log/apache2/project_access.log combined
+      </VirtualHost>
+  
+      <VirtualHost *:80>
+          ServerName psp.localhost
+          ServerAlias www.psp.localhost
+  
+          DocumentRoot /var/www/html/payment-service-provider/public
+          <Directory /var/www/html/payment-service-provider/public>
+              AllowOverride All
+              Require all granted
+              Allow from All
+              <IfModule mod_rewrite.c>
+                  Options -MultiViews
+                  RewriteEngine On
+              </IfModule>
+              FallbackResource /index.php
+          </Directory>
+  
+          ErrorLog /var/log/apache2/project_error.log
+          CustomLog /var/log/apache2/project_access.log combined
+      </VirtualHost>
 
 
 - In /etc/hosts file add these two hosts:
