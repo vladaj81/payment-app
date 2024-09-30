@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payment info{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+
+        <form action="http://psp.localhost/payment-confirm" method="POST">
+
+            <div class="row">
+                <div class="col-md-12 col-lg-4 offset-lg-4">
+
+                    <h1 class="text-primary mb-3">Payment Info</h1>
+
+                    {% for key, item in paymentInfo %}
+
+                        <p class="mt-2">
+                            <label>{{ key }}</label>
+                        </p>
+
+                        <input name='{{ key }}' value='{{ item }}' />
+                    {% endfor %}
+                
+                </div>
+                
+                <div class="col-md-12 col-lg-4 offset-lg-4 mt-5">
+                    <button class="btn btn-primary" type="submit">Confirm payment</button>
+                </div>
+            </div>
+            
+        </form>
+        
+    </div>
+
+{% endblock %}
