@@ -3,7 +3,7 @@
 Project for card payment simulation
 
 
-## # Setup and configuration for Linux OS local environment
+## Setup and configuration for Linux OS local environment
 
 - Clone the following repositories to the /var/www/html path:
   
