@@ -65,7 +65,10 @@ Project for card payment simulation
   sudo service apache2 restart
 
 - Go to /var/www/html/payment-app path and install project dependencies with:
+  
   composer install
+
+- Also, go to /var/www/html/payment-service-provider path and install dependencies with the same command.
 
 
 - Create mysql database payment_app_db
