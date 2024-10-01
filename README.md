@@ -7,9 +7,9 @@ Project for card payment simulation
 
 - Clone the following repositories to the /var/www/html path:
   
-  git@github.com:vladaj81/payment-app.git
+  git clone git@github.com:vladaj81/payment-app.git
 
-  git@github.com:vladaj81/payment-service-provider.git
+  git clone git@github.com:vladaj81/payment-service-provider.git
 
 - In /etc/apache2/apache2.conf file add following virtual hosts:
 
@@ -64,10 +64,13 @@ Project for card payment simulation
 
   sudo service apache2 restart
 
+- Go to /var/www/html/payment-app path and install project dependencies with:
+  composer install
+
 
 - Create mysql database payment_app_db
-- In payment-app project, in .env.local file, setup db connection string:
-  DATABASE_URL="mysql://user:password@127.0.0.1:3306/payment_app_db?serverVersion=8.0.32&charset=utf8mb4"
+- In the payment-app project, create an .env.local file and copy the content of the .env file into it.
+- In this file, setup db connection string: DATABASE_URL="mysql://user:password@127.0.0.1:3306/payment_app_db?serverVersion=8.0.32&charset=utf8mb4"
 
 - Run db migrations with following command:
 
@@ -83,7 +86,7 @@ Project for card payment simulation
 
 ## Notes
 
-- The application is written for the needs of the task and can be done much more seriously.
+- The application is written for the needs of the task and can be done much more seriously and dockerized.
 - A large part can be refactored by moving the code from the controller to separate services.
 - Also, a large amount of data is hardcoded and can be changed to be dynamic.
 - I didn't get to implement sonata admin.
